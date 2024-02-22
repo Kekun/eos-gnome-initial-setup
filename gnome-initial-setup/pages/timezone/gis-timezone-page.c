@@ -139,7 +139,7 @@ set_location (GisTimezonePage  *page,
 
       /* If the page hasn't yet been shown and we found the timezone
        * automatically, then don't show the page */
-      if (!priv->show_if_detected)
+      if (!page->show_if_detected)
         gtk_widget_hide (GTK_WIDGET (page));
 
       /* If this location is manually set, stop waiting for geolocation. */
@@ -479,11 +479,10 @@ static void
 gis_timezone_page_shown (GisPage *page)
 {
   GisTimezonePage *tz_page = GIS_TIMEZONE_PAGE (page);
-  GisTimezonePagePrivate *priv = gis_timezone_page_get_instance_private (tz_page);
 
   /* After the page has been shown already, don't hide it even if the location
    * is detected */
-  priv->show_if_detected = TRUE;
+  tz_page->show_if_detected = TRUE;
 }
 
 static gboolean
