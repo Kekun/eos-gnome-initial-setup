@@ -445,8 +445,6 @@ gis_timezone_page_constructed (GObject *object)
                     G_CALLBACK (entry_mapped), page);
   g_signal_connect (page->map, "location-changed",
                     G_CALLBACK (map_location_changed), page);
-  g_signal_connect (priv->clock_settings, "notify::" CLOCK_FORMAT_KEY,
-                    G_CALLBACK (update_timezone), page);
 
   gtk_widget_set_visible (GTK_WIDGET (page), TRUE);
 }
